@@ -9,8 +9,7 @@ public class TaskManager {
         while (true) {
             System.out.println("\n1. Agregar tarea\n2. Ver tareas\n3. Marcar como completada\n4. Eliminar tarea\n5. Salir");
             System.out.print("Opción: ");
-            int option = scanner.nextInt();
-            scanner.nextLine(); // limpiar buffer
+            int option = readIntOption();
 
             switch (option) {
                 case 1 -> addTask();
@@ -24,6 +23,18 @@ public class TaskManager {
                 default -> System.out.println("Opción no válida.");
             }
         }
+    }
+
+
+    private int readIntOption() {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Entrada no válida. Ingresa un número.");
+            System.out.print("Opción: ");
+            scanner.next(); // descartar entrada inválida
+        }
+        int option = scanner.nextInt();
+        scanner.nextLine(); // limpiar buffer
+        return option;
     }
 
     private void addTask() {
