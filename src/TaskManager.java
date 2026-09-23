@@ -39,7 +39,11 @@ public class TaskManager {
 
     private void addTask() {
         System.out.print("Descripción de la tarea: ");
-        String desc = scanner.nextLine();
+        String desc = scanner.nextLine().trim();
+        if (desc.isEmpty()) {
+            System.out.println("La descripción no puede estar vacía.");
+            return;
+        }
         tasks.add(new Task(desc));
     }
 
