@@ -56,7 +56,7 @@ public class TaskManager {
     private void completeTask() {
         viewTasks();
         System.out.print("Índice de tarea a completar: ");
-        int index = scanner.nextInt();
+        int index = readIntOption();
         if (index >= 0 && index < tasks.size()) {
             tasks.get(index).markAsCompleted();
         } else {
@@ -67,7 +67,7 @@ public class TaskManager {
     private void removeTask() {
         viewTasks();
         System.out.print("Índice de tarea a eliminar: ");
-        int index = scanner.nextInt();
+        int index = readIntOption();
         if (index >= 0 && index < tasks.size()) {
             tasks.remove(index);
         } else {
