@@ -18,6 +18,7 @@ public class TaskManager {
                 case 4 -> removeTask();
                 case 5 -> {
                     System.out.println("¡Hasta luego!");
+                    scanner.close();
                     return;
                 }
                 default -> System.out.println("Opción no válida.");
