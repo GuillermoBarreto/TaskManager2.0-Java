@@ -58,6 +58,10 @@ public class TaskManager {
     }
 
     private void completeTask() {
+        if (tasks.isEmpty()) {
+            System.out.println("No hay tareas para completar.");
+            return;
+        }
         viewTasks();
         System.out.print("Índice de tarea a completar: ");
         int index = readIntOption();
@@ -69,6 +73,10 @@ public class TaskManager {
     }
 
     private void removeTask() {
+        if (tasks.isEmpty()) {
+            System.out.println("No hay tareas para eliminar.");
+            return;
+        }
         viewTasks();
         System.out.print("Índice de tarea a eliminar: ");
         int index = readIntOption();
