@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskManager {
-    private ArrayList<Task> tasks = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private final ArrayList<Task> tasks = new ArrayList<>();
+    private final Scanner scanner = new Scanner(System.in);
 
     public void start() {
         while (true) {
