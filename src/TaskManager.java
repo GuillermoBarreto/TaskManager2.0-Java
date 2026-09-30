@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Console-based task manager: add, list, complete, and delete everyday tasks.
+ *
+ * <p>Tasks are stored in memory only and shown with 0-based indices in the menu.
+ * Non-numeric menu input is rejected with a prompt instead of crashing; choosing
+ * option 5 closes the input scanner and exits the menu loop.
+ */
 public class TaskManager {
     private final ArrayList<Task> tasks = new ArrayList<>();
     private final Scanner scanner = new Scanner(System.in);
