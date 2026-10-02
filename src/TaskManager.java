@@ -53,6 +53,7 @@ public class TaskManager {
             return;
         }
         tasks.add(new Task(desc));
+        System.out.println("Tarea agregada.");
     }
 
     private void viewTasks() {
@@ -74,7 +75,13 @@ public class TaskManager {
         System.out.print("Índice de tarea a completar: ");
         int index = readIntOption();
         if (index >= 0 && index < tasks.size()) {
-            tasks.get(index).markAsCompleted();
+            Task task = tasks.get(index);
+            if (task.isCompleted()) {
+                System.out.println("La tarea ya estaba completada.");
+            } else {
+                task.markAsCompleted();
+                System.out.println("Tarea completada.");
+            }
         } else {
             System.out.println("Índice inválido.");
         }
@@ -90,6 +97,7 @@ public class TaskManager {
         int index = readIntOption();
         if (index >= 0 && index < tasks.size()) {
             tasks.remove(index);
+            System.out.println("Tarea eliminada.");
         } else {
             System.out.println("Índice inválido.");
         }
