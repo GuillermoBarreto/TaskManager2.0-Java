@@ -17,6 +17,11 @@ public class TaskManager {
             System.out.println("\n1. Agregar tarea\n2. Ver tareas\n3. Marcar como completada\n4. Eliminar tarea\n5. Salir");
             System.out.print("Opción: ");
             int option = readIntOption();
+            if (option == -1) {
+                System.out.println("Entrada terminada. ¡Hasta luego!");
+                scanner.close();
+                return;
+            }
 
             switch (option) {
                 case 1 -> addTask();
@@ -36,6 +41,11 @@ public class TaskManager {
 
     private int readIntOption() {
         while (!scanner.hasNextInt()) {
+            if (!scanner.hasNext()) {
+                // Input stream closed (EOF, e.g. piped stdin): signal the
+                // caller to stop instead of throwing NoSuchElementException.
+                return -1;
+            }
             System.out.println("Entrada no válida. Ingresa un número.");
             System.out.print("Opción: ");
             scanner.next(); // descartar entrada inválida
@@ -74,6 +84,10 @@ public class TaskManager {
         viewTasks();
         System.out.print("Índice de tarea a completar: ");
         int index = readIntOption();
+        if (index == -1) {
+            System.out.println("Operación cancelada.");
+            return;
+        }
         if (index >= 0 && index < tasks.size()) {
             Task task = tasks.get(index);
             if (task.isCompleted()) {
@@ -95,6 +109,10 @@ public class TaskManager {
         viewTasks();
         System.out.print("Índice de tarea a eliminar: ");
         int index = readIntOption();
+        if (index == -1) {
+            System.out.println("Operación cancelada.");
+            return;
+        }
         if (index >= 0 && index < tasks.size()) {
             tasks.remove(index);
             System.out.println("Tarea eliminada.");
